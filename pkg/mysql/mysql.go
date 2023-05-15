@@ -12,7 +12,8 @@ var DB *gorm.DB
 func DatabaseInit() {
 	var err error
 
-	dsn := "root:@tcp(localhost:3306)/qurban"
+	// dsn := "root:@tcp(localhost:3306)/qurban"
+	dsn := GetEnv("DSN", "root:@tcp(localhost:3306)/qurban")
 	DB, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
 
 	if err != nil {
